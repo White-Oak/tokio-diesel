@@ -10,12 +10,14 @@ categories = ["asynchronous", "database"]
 
 [dependencies]
 async-trait = "0.1.42"
-diesel = { git = "https://github.com/diesel-rs/diesel", package = "diesel", default-features = false, features = ["r2d2"] }
+# diesel = { git = "https://github.com/diesel-rs/diesel", package = "diesel", default-features = false, features = ["r2d2"] }
+diesel = { version = "2", default-features = false, features = ["r2d2"] }
 futures = { version = "0.3.8", default-features = false }
 r2d2 = "0.8.9"
 tokio = { version = "1", default-features = false, features = ["rt-multi-thread"] }
 
 [dev-dependencies]
-diesel = { git = "https://github.com/diesel-rs/diesel", package = "diesel", default-features = false, features = ["postgres", "uuid"] }
+# diesel = { git = "https://github.com/diesel-rs/diesel", package = "diesel", default-features = false, features = ["postgres", "uuid"] }
+diesel = { version = "2", default-features = false, features = ["r2d2", "uuid"] }
 uuid = { version = "0.8.1", features = ["v4"] }
 tokio = { version = "1", default-features = false, features = ["full"] }
