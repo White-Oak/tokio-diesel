@@ -93,7 +93,7 @@ where
     async fn transaction<R, Func>(&self, f: Func) -> AsyncResult<R>
     where
         R: Send,
-        Func: FnOnce(&Conn) -> QueryResult<R> + Send;
+        Func: FnOnce(&mut Conn) -> QueryResult<R> + Send;
 }
 
 #[async_trait]
@@ -118,7 +118,7 @@ where
     async fn transaction<R, Func>(&self, f: Func) -> AsyncResult<R>
     where
         R: Send,
-        Func: FnOnce(&Conn) -> QueryResult<R> + Send,
+        Func: FnOnce(&mut Conn) -> QueryResult<R> + Send,
     {
         let self_ = self.clone();
         task::block_in_place(move || {
